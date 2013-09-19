@@ -4,11 +4,15 @@
   <head>
     <meta charset='utf-8' />
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Government-services-schema-from-google-spreadsheet-javascript : THis is a template for generating government services schema from Google Spreadsheet using PHP." />
+    <meta name="description" content="Government Services Schema From Google Spreadsheet In Javascript : This is a project for generating government services schema from a google spreadsheet in JavaScript" />
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <title>Government-services-schema-from-google-spreadsheet-javascript</title>
+    <title>Government Services Schema From Google Spreadsheet In Javascript</title>
+    
+    <script type="text/javascript" src="javascripts/jquery.js"></script>
+    <script type="text/javascript" src="javascripts/tabletop.js"></script>    
+    
   </head>
 
   <body>
@@ -16,14 +20,14 @@
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
-          <a id="forkme_banner" href="https://github.com/kinlane/government-services-schema-from-google-spreadsheet-javascript">View on GitHub</a>
+          <a id="forkme_banner" href="https://github.com/kinlane/government-services-schema-from-google-spreadsheet-in-javascript">View on GitHub</a>
 
-          <h1 id="project_title">Government-services-schema-from-google-spreadsheet-javascript</h1>
-          <h2 id="project_tagline">THis is a template for generating government services schema from Google Spreadsheet using PHP.</h2>
+          <h1 id="project_title">Government Services Schema From Google Spreadsheet In Javascript</h1>
+          <h2 id="project_tagline">This is a project for generating government services schema from a Google Spreadsheet in JavaScript</h2>
 
             <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/kinlane/government-services-schema-from-google-spreadsheet-javascript/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/kinlane/government-services-schema-from-google-spreadsheet-javascript/tarball/master">Download this project as a tar.gz file</a>
+              <a class="zip_download_link" href="https://github.com/kinlane/government-services-schema-from-google-spreadsheet-in-javascript/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/kinlane/government-services-schema-from-google-spreadsheet-in-javascript/tarball/master">Download this project as a tar.gz file</a>
             </section>
         </header>
     </div>
@@ -31,44 +35,182 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+          
+        <script type="text/javascript">
+        
+            function runGenerator()
+                {
+                url = document.getElementById("googleurl").value;
+                generateJSON(url);  
+                }
+        
+        </script>
+        
+        <h1>Government Services Schema</h1>
+        <p>This is a basic tool that pulls from a Google Spreadsheet that is setup as a government services template, allowing the editing of groups of services to renders as JSON output.</p>
+        <p>By default this tool uses <a href="https://docs.google.com/spreadsheet/ccc?key=0AmRmiTou7vbjdGZEaUdpV2lMNTRwZG5GMTdfWWRMUUE#gid=0" target="_blank">this spreadsheet</a>, you can make a copy of the template and populate with different data, publish publicy, and copy the URL in the textbox below to generate new JSON output.</p>
+              
+        <form action="index.php" method="get">
+            <strong>Google URL:</strong> <input type="text" name="googleurl" id="googleurl" value="https://docs.google.com/spreadsheet/pub?key=0AmRmiTou7vbjdGZEaUdpV2lMNTRwZG5GMTdfWWRMUUE&output=html" size="75" />
+            <input type="button" onclick="runGenerator();" name="changekey" value="Run" />
+        </form>
+        
+        <p><strong>Dependencies:</strong></p>
+        <ul>
+            <li><a href="https://github.com/jsoma/tabletop" target="_blank">Tabletop</a></li>
+            <li><a href="http://jquery.com/" target="_blank">Jquery</a></li>   
+        </ul>           
+       
+        <p>This project is meant to provide an easily forkable project that any federal, state, county or city government can use to generate service listings in a Google Doc and then output as JSON, just by using a Github repo and no server side code.</p>
+        
+        <script type="text/javascript">
+        
+            function generateJSON(url)
+                {
+                    
+                  var public_spreadsheet_url = url;
+            
+                  $(document).ready( function() {
+                    Tabletop.init( { key: public_spreadsheet_url,
+                                     callback: showInfo,
+                                     wanted: [ "Services", "Service Locations" ],
+                                     debug: true } )
+                  })
+                    
+                  function showInfo(data, tabletop) {
+                    $("#table_info").text("We found the tables " + tabletop.model_names.join(", "));
+            
+                    $.each( tabletop.sheets(), function(i, sheet) {
+                      $("#table_info").append("<p>" + sheet.name + " has " + sheet.column_names.join(", ") + "</p>");
+                    });
+                    
+                    $.each( tabletop.sheets("Services").all(), function(i, service) {
+                        
+                        $servicename = service.servicename;
+                        $uniqueid = service.uniqueid;
+                        $description = service.description;
+                        $url = service.url;
+                        $image = service.image;
+                        $alternatenames = service.alternatenames;
+                        $servicearea = service.servicearea;
+                        $providername = service.providername;
+                        $providerlogo = service.providerlogo;
+                        $providerurl = service.providerurl;
+                        $operator = service.operator;
+                        $servicetype = service.servicetype;
+                        $servicetypetaxonomyused = service.servicetypetaxonomyused;
+                        $produces = service.produces;
+                        $audience = service.audience;
+                        $availablelanguages = service.availablelanguages;
+                        $serviceurl = service.serviceurl;
+                        $servicephone = service.servicephone;   
+                        
+                        // Let's buil the Schema
+                        $Schema = {};
+                        $Schema['@context'] = 'http://schema.org/';
+                        $Schema['@type'] = 'GovernmentService';
+                        $Schema['@id'] = $uniqueid;
+                        $Schema['name'] = $servicename;                 
+                        
+                        // Audience
+                        $audienceArray = $audience.split(";");
+                        $Audience = {};
+                        $Audience["@type"] = "CivicAudience";
+                        $Audience['audienceType'] = new Array();
+                        $.each($audienceArray, function( key, value ){
+                            $Audience['audienceType'].push(value);  
+                        })
+                                    
+                        $Schema['audience'] = $Audience;        
+                    
+                        $Schema['Description'] = $description;
+                    
+                        $Provider = {};
+                        $Provider["@type"] = "GovernmentOrganization";
+                        $Provider["name"] = $providername;
+                        $Provider["url"] = $providerurl;
+                        $Provider["logo"] = $providerlogo;
+                        
+                        $Schema['provider'] = $Provider;        
+                        
+                        $ServiceArea = {};
+                        $ServiceArea["@type"] = "Country";
+                        $ServiceArea["name"] = "ocd-division/country:us";   
+                                        
+                        $Schema['serviceArea'] = $ServiceArea;          
+            
+                        SServiceChannel = {};
+                        SServiceChannel["@type"] = "ServiceChannel";
+                        SServiceChannel["servicePhone"] = $servicephone;    
+                        SServiceChannel["serviceLocation"] = new Array();
+            
+                        $.each(tabletop.sheets("Service Locations").all(), function(i, servicelocations) {
+                            
+                            $servicelocation_name = servicelocations.name;
+                            $servicelocation_addressstreet = servicelocations.addressstreet;
+                            $servicelocation_addresscity = servicelocations.addresscity;
+                            $servicelocation_addressstate = servicelocations.addressstate;
+                            $servicelocation_addresszip = servicelocations.addresszip;
+                            $servicelocation_telephone = servicelocations.telephone;
+                            $servicelocation_service_name = servicelocations.servicename;
+                                            
+                            //echo "Location Name: " . $servicelocation_name . "<br />";
+                            //echo "Location Address: " . $servicelocation_addressstreet . "<br />";
+                            //echo "Location City: " . $servicelocation_addresscity . "<br />";
+                            //echo "Location State: " . $servicelocation_addressstate . "<br />";
+                            //echo "Location Zip: " . $servicelocation_addresszip . "<br />";
+                                                    
+                            if ($servicelocation_service_name.indexOf($servicename) !=-1) { 
+                                    
+                                $ServiceLocation = {};
+                                $ServiceLocation["@type"] = "CivicStructure";   
+                                $ServiceLocation["name"] = $servicelocation_name;
+                                
+                                $ServiceLocationAddress = {};
+                                $ServiceLocationAddress["streetAddress"] = $servicelocation_addressstreet;
+                                $ServiceLocationAddress["addressLocality"] = $servicelocation_addresscity;
+                                $ServiceLocationAddress["addressRegion"] = $servicelocation_addressstate;
+                                $ServiceLocationAddress["postalCode"] = $servicelocation_addresszip;        
+                                $ServiceLocationAddress["telephone"] = $servicelocation_telephone;
+                                    
+                                $ServiceLocation['address'] = $ServiceLocationAddress;      
+                                SServiceChannel['serviceLocation'].push($ServiceLocation);  
+                
+                                }
+                        })
+                        
+                        $Schema['serviceChannel'] = SServiceChannel;            
+                            
+                        // ServiceType
+                        SServiceType = {};
+                        SServiceType["@type"] = "ServiceType";
+                        SServiceType['name'] = $servicetype;            
+                        SServiceType['serviceTaxonomy'] = $servicetypetaxonomyused; 
+                        
+                        $Schema['serviceType'] = SServiceType;          
+                       
+                        jsonStr = JSON.stringify($Schema);
+                        
+                        jsonStr = JSON.stringify(JSON.parse(jsonStr),null,2);  
+                       
+                        document.getElementById('showjson').value = jsonStr;
+                        //alert(mydump($Schema));
+                    })        
+                    
+                  }
+                  
+                 }
+            </script>
+            
+            <textarea cols="75" rows="30" id="showjson" /></textarea><br />        
+        
       </section>
     </div>
 
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
       <footer class="inner">
-        <p class="copyright">Government-services-schema-from-google-spreadsheet-javascript maintained by <a href="https://github.com/kinlane">kinlane</a></p>
+        <p class="copyright">Government Services Schema From Google Spreadsheet In Javascript maintained by <a href="https://github.com/kinlane">kinlane</a></p>
         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
